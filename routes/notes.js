@@ -13,17 +13,18 @@ note.get('/', (req, res) => {
 note.post('/', (req, res) => {
   // Log that a POST request was received
   console.info(`${req.method} request received to submit note`);
+  console.log(req.body);
 
   // Destructuring assignment for the items in req.body
   const { noteTitle, noteText } = req.body;
 
   // If all the required properties are present
-  if (email && feedbackType && feedback) {
+  if (noteTitle && noteText) {
     // Variable for the object we will save
     const newNote = {
-      noteTitle,
-      noteText,
-      feedback_id: uuid(),
+      title: noteTitle,
+      text: noteText,
+      id: uuid(),
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -32,10 +33,11 @@ note.post('/', (req, res) => {
       status: 'success',
       body: newNote,
     };
+    console.log(response)
 
     res.json(response);
   } else {
-    res.json('Error in posting feedback');
+    res.json('Error in saving note');
   }
 });
 
