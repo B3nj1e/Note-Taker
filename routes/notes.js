@@ -2,28 +2,27 @@ const note = require('express').Router();
 const { readFromFile, readAndAppend, writeToFile } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 
-// GET Route for retrieving all the feedback
+// GET Route for retrieving all the notes
 note.get('/', (req, res) => {
   console.info(`${req.method} request received for note`);
 
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-// POST Route for submitting feedback
+// POST Route for saving note
 note.post('/', (req, res) => {
   // Log that a POST request was received
   console.info(`${req.method} request received to submit note`);
-  console.log(req.body);
 
   // Destructuring assignment for the items in req.body
-  const { noteTitle, noteText } = req.body;
+  const { title, text } = req.body;
 
   // If all the required properties are present
-  if (noteTitle && noteText) {
+  if (title && text) {
     // define key:value pairs for the object to be saved
     const newNote = {
-      title: noteTitle,
-      text: noteText,
+      title: title,
+      text: text,
       id: uuid(),
     };
 
@@ -40,5 +39,21 @@ note.post('/', (req, res) => {
     res.json('Error in saving note');
   }
 });
+
+
+// const { noteId } = handleNoteDelete(e);
+// let id = noteId;
+
+note.delete('/?',  id =  { noteId } = req.body, (res, req) => {
+
+    console.info(`${req.method} request received for note`);
+
+    const { noteId } = req.body;
+    if (noteId == id) {
+    readFromFile('./db/db.json').then((data) => res(console.log(JSON.parse(data))));
+    }
+    // if (id = g);
+    // console.log(noteId);
+})
 
 module.exports = note;
