@@ -44,7 +44,7 @@ note.post('/', (req, res) => {
 // const { noteId } = handleNoteDelete(e);
 // let id = noteId;
 
-note.delete('/?',  id =  { noteId } = req.body, (res, req) => {
+note.delete('/?', id, (res, req) => {
 
     console.info(`${req.method} request received for note`);
 
@@ -52,8 +52,7 @@ note.delete('/?',  id =  { noteId } = req.body, (res, req) => {
     if (noteId == id) {
     readFromFile('./db/db.json').then((data) => res(console.log(JSON.parse(data))));
     }
-    // if (id = g);
-    // console.log(noteId);
+
 })
 
 module.exports = note;
