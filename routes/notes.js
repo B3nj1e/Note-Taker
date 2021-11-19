@@ -1,5 +1,5 @@
 const note = require('express').Router();
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, writeToFile } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving all the feedback
@@ -20,7 +20,7 @@ note.post('/', (req, res) => {
 
   // If all the required properties are present
   if (noteTitle && noteText) {
-    // Variable for the object we will save
+    // define key:value pairs for the object to be saved
     const newNote = {
       title: noteTitle,
       text: noteText,
