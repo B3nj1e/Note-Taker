@@ -46,7 +46,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 To use the application, please download all associated files off the [GitHub repository](https://github.com/B3nj1e/Note-Taker). Ensure node.js is installed. In the terminal run `` npm i`` to install the dependencies, including inquirer and jest. Once the inquirer package has been installed, in the terminal type ``node server.js``. You can then add and delete tasks using the user interface in the web browser.  
 
 ## Usage Instructions
-Please download the download the repository and follow the installation instructions above. Alternative, click [here](hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh) to access application deployed on Heroku. 
+Please download the download the repository and follow the installation instructions above. Alternative, click [here](https://git.heroku.com/gentle-ocean-39165.git) to access application deployed on Heroku. 
 
 ## Contribution Guidelines
 If you think you can improve this application, please feel free to make contributions. I will review these changes on GitHub prior to merging them to the main branch.
