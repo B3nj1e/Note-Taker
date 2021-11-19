@@ -41,18 +41,20 @@ note.post('/', (req, res) => {
 });
 
 
-// const { noteId } = handleNoteDelete(e);
-// let id = noteId;
+note.delete('/:id', (req, res) => {
+    //selcting id from request object
+    let noteId = req.params.id;
+    
+    // reading the database file
+    readFromFile('./db/db.json').then((data) => JSON.parse(data))
+    .then((json) => {
+        // once the data is a string filter the notes for the id that was object from the request object
+      const removeNote = json.filter((note) => note.id !== noteId);
+      // if the note id in the database does not match the request object id then write into the database file
+      writeToFile('./db/db.json', removeNote); 
 
-note.delete('/?', id, (res, req) => {
-
-    console.info(`${req.method} request received for note`);
-
-    const { noteId } = req.body;
-    if (noteId == id) {
-    readFromFile('./db/db.json').then((data) => res(console.log(JSON.parse(data))));
-    }
-
-})
+      res.json(`Note ID:${noteId} has been deleted!`);
+    });
+});
 
 module.exports = note;
